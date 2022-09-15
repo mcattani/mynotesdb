@@ -1,0 +1,55 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,45,22)
+  Text = ("Buscar")
+  Icon = Picture["icon:/22/find"]
+  Resizable = False
+  Spacing = True
+  Margin = True
+  { rbFecha RadioButton
+    MoveScaled(2,1,10,4)
+    Text = ("Fecha")
+  }
+  { rbAutor RadioButton
+    MoveScaled(12,1,10,4)
+    Text = ("Autor")
+  }
+  { HBox1 HBox
+    MoveScaled(1,16,43,4)
+    Spacing = True
+    { Panel1 Panel
+      MoveScaled(4,0,4,4)
+      Expand = True
+    }
+    { btnBuscar Button
+      MoveScaled(9,0,16,4)
+      Text = ("Buscar")
+      Default = True
+    }
+    { btnCancelar Button
+      MoveScaled(26,0,16,4)
+      Text = ("Cancelar")
+      Cancel = True
+    }
+  }
+  { rbClase RadioButton
+    MoveScaled(23,1,10,4)
+    Text = ("Clase")
+  }
+  { rbLugar RadioButton
+    MoveScaled(33,1,10,4)
+    Text = ("Lugar")
+  }
+  { rbContenido RadioButton
+    MoveScaled(2,5,13,4)
+    Text = ("Contenido")
+  }
+  { rbTags RadioButton
+    MoveScaled(15,5,8,4)
+    Text = ("Tags")
+  }
+  { txBuscar TextBox
+    MoveScaled(2,10,41,4)
+  }
+}

@@ -1,0 +1,374 @@
+' Gambas class file
+
+Public Conn As Connection
+Private Contenido As Result
+Private sAppDir As String = User.home &/ "/MyNotesDB"
+
+Public Sub Form_Open()
+
+  FMain.Text = Application.Title & " v." & Application.Version
+  Settings.Read(Me)
+
+  'Chequeamos que exista el directorio con la base de datos
+  If Not Exist(sAppDir) Then
+    Mkdir sAppDir
+    Copy "./db_clases.sqlite" To sAppDir &/ "db_clases.sqlite"
+  Endif
+
+  Conectar() ' Llamamos a la función para conectar a la base de datos
+  Mostrar_Lista()
+
+End
+
+Public Sub Mostrar_Lista() 'Función que rellena con las fechas y el nombre del autor el List View
+
+  Contenido = Conn.Exec("select fecha, autor, id from clases")
+  If Contenido.Available Then
+    VLista.Clear
+    While (Contenido.Available)
+      VLista.Add(CInt(Contenido!id), Contenido!fecha & " - " & Contenido!autor, Picture["right-arrow.ico"])
+      Contenido.MoveNext
+    Wend
+  Endif
+
+End
+
+Public Sub Conectar() ' Función para conectarnos a la base de datos
+
+  Conn = New Connection
+  Conn.Type = "sqlite"
+  Conn.Host = sAppDir
+  Conn.Name = "db_clases.sqlite"
+  Try Conn.Open
+  If Error Then
+    Message.Error("Error al conectar con la base de datos. Asegúrese de que el archivo con la base de datos se encuentre en la carpeta del programa. " & Application.Path)
+    Conn = Null
+    Quit
+  Endif
+
+End
+
+Public Sub Form_KeyRelease()
+
+  If Key.Code = Key.Esc Then
+    Settings.Write(Me)
+    Conn.Close
+    Quit
+  Endif
+
+End
+
+Public Sub Form_Resize()
+  ' Todavía tengo problemas para que las ventanas hagan automaticamente lo que yo quiera así que lo hago de manera manual
+
+  VBox1.Height = FMain.Height - 39
+  VBox2.Height = FMain.Height - 230
+  vbox2.Width = FMain.Width - 315
+
+End
+
+Public Sub Form_Close()
+
+  Settings.Write(Me)
+  Conn.Close
+  Quit
+
+End
+
+Public Sub VLista_Select() 'Función que nos muestra la información de la BD cuando hacemos click en el ListView
+  'select * from clases where id = 1
+  'Print VLista.Item.Key
+
+  Contenido = Conn.Exec("select * from clases where id = " & VLista.item.key)
+  txId.Text = Contenido!id
+  txFecha.Text = Contenido!fecha
+  txAutor.Text = Contenido!autor
+  txClase.Text = Contenido!nombre_clase
+  txLugar.Text = Contenido!lugar
+  txContenido.Text = Contenido!contenido
+  txTags.Text = Contenido!tags
+
+End
+
+Public Sub mnSalir_Click()
+
+  Settings.Write(Me)
+  Try Conn.Close
+  Quit
+
+End
+
+Public Sub mnModificar_Click()
+
+  If txId.Text = "" Then
+    Message.Info("Debe seleccionar una entrada primero.")
+    Return
+  Endif
+
+  'Permitios la modificación de los textbox
+  txFecha.ReadOnly = False
+  txAutor.ReadOnly = False
+  txAutor.ReadOnly = False
+  txClase.ReadOnly = False
+  txLugar.ReadOnly = False
+  txContenido.ReadOnly = False
+  txTags.ReadOnly = False
+
+  btnGuardarMod.visible = True
+
+End
+
+Public Sub btnGuardarMod_Click()
+
+  Contenido = Conn.Edit("clases", "id=" & txId.Text)
+  Contenido!id = txId.Text
+  Contenido!fecha = txFecha.Text
+  Contenido!autor = txAutor.Text
+  Contenido!nombre_clase = txClase.Text
+  Contenido!lugar = txLugar.Text
+  Contenido!contenido = txContenido.Text
+  Contenido!tags = txTags.Text
+  Contenido.Update
+  Message.Info("Modificación guardada.")
+  btnGuardarMod.visible = False
+
+  'Volvemos a bloquear la modificación de los textbox
+  txFecha.ReadOnly = True
+  txAutor.ReadOnly = True
+  txAutor.ReadOnly = True
+  txClase.ReadOnly = True
+  txLugar.ReadOnly = True
+  txContenido.ReadOnly = True
+  txTags.ReadOnly = True
+
+End
+
+Public Sub mnNuevo_Click()
+  ' SELECT MAX(id) FROM clases LIMIT 1 --> Nos devuelve el total de IDs en la tabla
+
+  Dim Idn As Integer
+
+  'Limpiamos todos los campos y habilitamos botón para guardar
+  txId.Text = ""
+  txFecha.Text = ""
+  txAutor.Text = ""
+  txClase.Text = ""
+  txLugar.Text = ""
+  txContenido.Text = ""
+  txTags.Text = ""
+  btnGuardar.visible = True
+
+  'Permitios la modificación de los textbox
+  txFecha.ReadOnly = False
+  txAutor.ReadOnly = False
+  txAutor.ReadOnly = False
+  txClase.ReadOnly = False
+  txLugar.ReadOnly = False
+  txContenido.ReadOnly = False
+  txTags.ReadOnly = False
+
+  'Obtenemos el último ID y sumamos +1 para el nuevo registro
+  Contenido = Conn.Exec("SELECT MAX(id) FROM clases LIMIT 1")
+  ' Si no hay ninguna entrada entonces arrancamos desde 0
+  If Contenido["MAX(id)"] = Null Then
+    Idn = 0
+  Else
+    Idn = CInt(Contenido["MAX(id)"]) + 1
+  Endif
+  txId.Text = Idn
+
+End
+
+Public Sub btnGuardar_Click()
+
+  Contenido = Conn.Create("clases")
+  Contenido!id = txId.Text
+  Contenido!fecha = txFecha.Text
+  Contenido!autor = txAutor.Text
+  Contenido!nombre_clase = txClase.Text
+  Contenido!lugar = txLugar.Text
+  Contenido!contenido = txContenido.Text
+  Contenido!tags = txTags.Text
+  Contenido.Update
+
+  btnGuardar.visible = False
+  Message.Info("Entrada guardada. ")
+
+  'Permitios la modificación de los textbox
+  txFecha.ReadOnly = False
+  txAutor.ReadOnly = False
+  txAutor.ReadOnly = False
+  txClase.ReadOnly = False
+  txLugar.ReadOnly = False
+  txContenido.ReadOnly = False
+  txTags.ReadOnly = False
+
+  Mostrar_Lista() ' Refrescamos la lista de entradas
+
+End
+
+Public Sub mnEliminar_Click()
+
+  'Chequeamos primero que se haya elegido una entrada
+  If txId.Text = "" Then
+    Message.Info("Debe primero seleccionarse la entrada a borrar.")
+    Return
+  Endif
+
+  If Message.Question("¿Desea borrar la entrada?", "Si", "No") = 1 Then
+    Contenido = Conn.Exec("delete from clases where id=" & txId.Text)
+  Endif
+
+  'Limpiamos los campos
+  txId.Text = ""
+  txFecha.Text = ""
+  txAutor.Text = ""
+  txClase.Text = ""
+  txLugar.Text = ""
+  txContenido.Text = ""
+  txTags.Text = ""
+
+  VLista.Clear
+  Mostrar_Lista()
+
+End
+
+Public Sub mnAbout_Click()
+
+  frmAbout.Show
+
+End
+
+Public Sub mnuVacuumInfo_Click()
+
+  Desktop.Open("https://www.sqlite.org/matrix/lang_vacuum.html")
+
+End
+
+Public Sub mnuVacuum_Click()
+
+  Try Conn.Exec("vacuum")
+  If Error Then
+    Message.Warning("No se ha podido completar la acción. " & Error.Code)
+    Return
+  Endif
+
+  Message.Info("Se ha completado la limpieza.")
+
+End
+
+Public Sub mnUbicacion_Click()
+
+  'Message.Info("Ubicación de la base: " & Application.path)
+  Desktop.Open(sAppDir)
+
+End
+
+Public Sub mnETexto_Click()
+
+  If txId.Text = "" Then
+    Message.Warning("Debe primero elegir una entrada.")
+    Return
+  Endif
+
+  mExportar.ExportarATXT
+
+End
+
+Public Sub mnuPrevMark_Click()
+
+  If txId.Text = "" Then
+    Message.Warning("Debe primero elegir una entrada.")
+    Return
+  Endif
+
+  mExportar.ExportarAMD
+
+End
+
+Public Sub mnExportarHTML_Click()
+
+  If txId.Text = "" Then
+    Message.Warning("Debe primero elegir una entrada.")
+    Return
+  Endif
+
+  If Not Exist("/usr/bin/pandoc") Then
+    Message.Warning("Debe tener instalado el programa <b>pandoc</b> para realizar esta acción.")
+  Endif
+
+  mExportar.ExportarHTLM ' Llamamos a la función para exportar a HTML
+
+End
+
+Public Sub mnExportarDOCX_Click()
+
+  If txId.Text = "" Then
+    Message.Warning("Debe primero elegir una entrada.")
+    Return
+  Endif
+
+  If Not Exist("/usr/bin/pandoc") Then
+    Message.Warning("Debe tener instalado el programa <b>pandoc</b> para realizar esta acción.")
+    Return
+  Endif
+
+  mExportar.ExportarDOCX
+
+End
+
+Public Sub mnuPrevHtml_Click()
+
+  If txId.Text = "" Then
+    Message.Warning("Debe primero elegir una entrada.")
+    Return
+  Endif
+
+  If Not Exist("/usr/bin/pandoc") Then
+    Message.Warning("Debe tener instalado el programa <b>pandoc</b> para realizar esta acción.")
+    Return
+  Endif
+
+  mExportar.HmlPreview
+
+End
+
+Public Sub mnuReload_Click()
+
+  VLista.Clear
+  Mostrar_Lista
+
+End
+
+Public Sub mnuBuscar_Click()
+
+  frmBuscar.Show
+
+End
+
+Public Sub btnRefresh_Click()
+  'Este botón aparece tras realizar una búsqueda
+
+  VLista.Clear
+  Mostrar_Lista
+  btnRefresh.Visible = False
+
+End
+
+Public Sub tbNuevo_Click()
+
+  mnNuevo_Click()
+
+End
+
+Public Sub tbModificar_Click()
+
+  mnModificar_Click
+
+End
+
+Public Sub tbBorrar_Click()
+
+  mnEliminar_Click
+
+End

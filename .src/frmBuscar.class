@@ -1,0 +1,58 @@
+' Gambas class file
+
+Private Busqueda As Result
+
+Public Sub btnBuscar_Click()
+  ' select * from clases where tags like '%error%' comando para realizar la búsqueda
+  
+  Dim bItem As String ' Variable que utilizaremos para realizar la búsqueda
+  Dim Comando As String
+  
+  ' Chequeamos que Radio Button está activado y pasamos el valor a BItem
+  If rbFecha.Value = True Then bItem = "fecha"
+  If rbAutor.Value = True Then bItem = "autor"
+  If rbClase.Value = True Then bItem = "nombre_clase"
+  If rbLugar.Value = True Then bItem = "lugar"
+  If rbContenido.Value = True Then bItem = "contenido"
+  If rbTags.Value = True Then bItem = "tags"
+  
+  Comando = "select * from clases where " & BItem & " like " & "'%" & txBuscar.Text & "%'"
+  
+  If txBuscar.Text = "" Then
+    Message.Warning("Debe introducir un campo a buscar.")
+    Return
+  Endif
+  
+  Busqueda = FMain.Conn.Exec(Comando)
+  
+  'Si la búsqueda no arroja resultados
+  If Busqueda.Count = 0 Then 
+    Message.Info("No se ha encontrado ningún resultado.")
+    Return 
+  Endif
+  
+  If Busqueda.Available Then
+    FMain.VLista.Clear
+    While (Busqueda.Available)
+      FMain.VLista.Add(Busqueda!id, Busqueda!fecha & " - " & Busqueda!autor, Picture["right-arrow.ico"])
+      Busqueda.MoveNext
+    Wend
+  Endif
+  
+  FMain.btnRefresh.Visible = True ' Mostramos el botón de refresh en el form original para recargar las entradas
+  
+  Me.Close
+  
+End
+
+Public Sub btnCancelar_Click()
+  
+  Me.Close
+  
+End
+
+Public Sub Form_Open()
+  
+  rbFecha.Value = True ' Para que aprezca el primero seleccionado por defecto
+  
+End

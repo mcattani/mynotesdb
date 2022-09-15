@@ -1,0 +1,59 @@
+* Mon Sep 12 2022 The Nerdy Apprentice <marianocattani@gmail.com> 0.3.51
+- Agregados botones de acceso rápido
+
+* Sun Sep 11 2022 The Nerdy Apprentice <marianocattani@gmail.com> 0.3.45
+- Corrección de errores
+
+* Sat Sep 10 2022 The Nerdy Apprentice <marianocattani@gmail.com> 0.3.44
+- Las textbox serán readonly hasta que se cree una nueva entrada o se quiera editar una
+- Corregido error que aparece a veces al previsualizar html en navegador (agregado retardo)
+- Prueba instalador
+
+* Fri Sep 09 2022 The Nerdy Apprentice <marianocattani@gmail.com> 0.3.42
+- Corregido error que aparecía al borrar completamente una base de datos y luego crear una entrada
+
+* Fri Sep 09 2022 The Nerdy Apprentice <marianocattani@gmail.com> 0.3.41
+
+* Fri Sep 09 2022 The Nerdy Apprentice <marianocattani@gmail.com> 0.3.40
+- Agregada advertencia de 'contenido no encontrado' tras una búsqueda sin resultados
+- Corregido bug que aparecía en algunos entornos al previsualizar en html
+
+* Thu Sep 08 2022 The Nerdy Apprentice <marianocattani@gmail.com> 0.3.36
+- Agregado botón de refresco de lista tras búsqueda
+- Corregido instalador para Arch
+- Prueba de instalador en Debian/Ubuntu
+
+* Mon Sep 05 2022 The Nerdy Apprentice <marianocattani@gmail.com> 0.2.31
+- Incluidos mensajes de confirmación tras exportación exitosa, guardado y modificado
+- Corrección de código
+- Correción del instalador
+
+* Sun Sep 04 2022 The Nerdy Apprentice <marianocattani@gmail.com> 0.2.28
+- Creación de carpeta contenedora de base de datos en $USER/MyNotesDB
+- Prueba de instalador
+
+* Sun Sep 04 2022 The Nerdy Apprentice <marianocattani@gmail.com> 0.2.27
+- Agregada la función de exportar a DOCX
+- Agregada la función de previsualización en HTML con el navegador usado por defecto
+- Comentado de código
+- Prueba del instalador
+
+* Sun Sep 04 2022 The Nerdy Apprentice <marianocattani@gmail.com> 0.1.25
+- Agregado autoextensión de los archivos al guardarlos
+- Prueba del instalador
+
+* Sat Sep 03 2022 The Nerdy Apprentice <marianocattani@gmail.com> 0.1.24
+- Agegado exportar a html
+- Corrección de código
+
+* Fri Sep 02 2022 The Nerdy Apprentice <marianocattani@gmail.com> 0.1.23
+- Modificación de código
+- Prueba instalador
+
+* Fri Sep 02 2022 The Nerdy Apprentice <marianocattani@gmail.com> 0.1.22
+- Corregidos errores
+- Agregada opción de exportar entradas a texto
+
+* Wed Aug 31 2022 The Nerdy Apprentice <marianocattani@gmail.com> 0.0.19
+- Lanzamiento inicial
+

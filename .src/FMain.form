@@ -1,0 +1,218 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,144,78)
+  Expand = True
+  Icon = Picture["icon.png"]
+  AutoResize = True
+  { mnOpciones Menu
+    Text = ("Opciones")
+    { mnNuevo Menu
+      Text = ("Nuevo")
+      Picture = Picture["icon:/24/new"]
+    }
+    { mnModificar Menu
+      Text = ("Modificar")
+      Picture = Picture["icon:/24/edit"]
+    }
+    { mnEliminar Menu
+      Text = ("Eliminar")
+      Picture = Picture["icon:/24/delete"]
+    }
+    { mnuReload Menu
+      Text = ("Recargar")
+      Picture = Picture["icon:/22/refresh"]
+    }
+    { mnuBuscar Menu
+      Text = ("Buscar")
+      Picture = Picture["icon:/22/find"]
+    }
+    { Menu2 Menu
+    }
+    { mnSalir Menu
+      Text = ("Salir")
+      Picture = Picture["icon:/24/close"]
+    }
+    { Menu1 Menu
+    }
+    { mnAbout Menu
+      Text = ("Acerca de") & "..."
+      Picture = Picture["icon:/22/info"]
+    }
+  }
+  { mnDB Menu
+    Text = ("Base de Datos")
+    { mnLimpiarBase Menu
+      Text = ("Limpiar Base")
+      Picture = Picture["icon:/22/database"]
+      { mnuVacuum Menu
+        Text = ("Vacuum")
+        Picture = Picture["icon:/22/clear"]
+      }
+      { mnuVacuumInfo Menu
+        Text = ("Vacuum Info")
+        Picture = Picture["icon:/22/info"]
+      }
+    }
+    { mnUbicacion Menu
+      Text = ("Ubicación BD")
+      Picture = Picture["icon:/22/file"]
+    }
+  }
+  { mnExportarEntrada Menu
+    Text = ("Exportar Entrada")
+    { mnETexto Menu
+      Text = ("Archivo de texto (*.txt)")
+      Picture = Picture["icon:/22/file"]
+    }
+    { mnuPrevMark Menu
+      Text = ("Formato Markdown (*.md)")
+      Picture = Picture["markdown_icon.png"]
+    }
+    { mnExportarHTML Menu
+      Text = ("Formato HTML")
+      Picture = Picture["icon:/22/html"]
+    }
+    { mnExportarDOCX Menu
+      Text = ("Formato Word (*.docx)")
+      Picture = Picture["word.png"]
+    }
+    { mnuPrevHtml Menu
+      Text = ("Previsualizar (html)")
+      Picture = Picture["icon:/22/preview"]
+    }
+  }
+  { !VBox1 VBox
+    MoveScaled(1,0,37,73)
+    #Public = True
+    Expand = True
+    { Label1 Label
+      MoveScaled(1,1,14,3)
+      Text = ("Entradas:")
+    }
+    { !VLista ListView
+      MoveScaled(0,4,36,68)
+      #Public = True
+      ToolTip = ("Entradas en la base de datos")
+      Expand = True
+      PopupMenu = "mnExportarEntrada"
+    }
+  }
+  { Panel1 Panel
+    MoveScaled(39,0,104,24)
+    Padding = 5
+    { Label4 Label
+      MoveScaled(1,3,3,4)
+      Text = ("Id:")
+    }
+    { Label2 Label
+      MoveScaled(0,7,6,4)
+      Text = ("Autor:")
+    }
+    { Label5 Label
+      MoveScaled(0,11,6,4)
+      Text = ("Clase:")
+    }
+    { Label6 Label
+      MoveScaled(0,15,6,4)
+      Text = ("Lugar:")
+    }
+    { Label7 Label
+      MoveScaled(0,19,6,4)
+      Text = ("Tags:")
+    }
+    { !txId TextBox
+      MoveScaled(6,3,6,4)
+      #Public = True
+      Alignment = Align.Center
+      ReadOnly = True
+    }
+    { !txFecha TextBox
+      MoveScaled(20,3,12,4)
+      #Public = True
+      Alignment = Align.Center
+      ReadOnly = True
+    }
+    { !txAutor TextBox
+      MoveScaled(6,7,72,4)
+      #Public = True
+      ReadOnly = True
+    }
+    { !txClase TextBox
+      MoveScaled(6,11,72,4)
+      #Public = True
+      ReadOnly = True
+    }
+    { !txLugar TextBox
+      MoveScaled(6,15,72,4)
+      #Public = True
+      ReadOnly = True
+    }
+    { !txTags TextBox
+      MoveScaled(6,19,72,4)
+      #Public = True
+      ReadOnly = True
+    }
+    { Label3 Label
+      MoveScaled(14,3,6,4)
+      Text = ("Fecha:")
+    }
+    { !btnRefresh Button
+      MoveScaled(79,12,18,5)
+      #Public = True
+      Visible = False
+      Text = ("Recargar Lista")
+      Picture = Picture["icon:/24/refresh"]
+    }
+    { btnGuardarMod Button
+      MoveScaled(79,18,24,5)
+      Visible = False
+      ToolTip = ("Guardar modificaciones")
+      Text = ("Guardar modificaciones")
+      Picture = Picture["icon:/22/save"]
+    }
+    { tIcon #TrayIcon
+      #MoveScaled(33,0)
+      Picture = Picture.Load("icon.png")
+      PopupMenu = "mnOpciones"
+    }
+    { btnGuardar Button
+      MoveScaled(79,18,16,5)
+      Visible = False
+      ToolTip = ("Guardar entrada")
+      Text = ("Guardar")
+      Picture = Picture["icon:/22/save-as"]
+    }
+    { Frame1 Frame
+      MoveScaled(80,3,17,8)
+      Text = ("Acceso Rápido")
+      { tbModificar ToolButton
+        MoveScaled(7,3,4,4)
+        ToolTip = ("Modificar entrada")
+        Picture = Picture["icon:/24/edit"]
+        Border = True
+      }
+      { tbNuevo ToolButton
+        MoveScaled(2,3,4,4)
+        ToolTip = ("Agregar entrada")
+        Picture = Picture["icon:/24/add"]
+        Border = True
+      }
+      { tbBorrar ToolButton
+        MoveScaled(12,3,4,4)
+        ToolTip = ("Eliminar entrada")
+        Picture = Picture["icon:/22/delete"]
+        Border = True
+      }
+    }
+  }
+  { VBox2 VBox
+    MoveScaled(39,24,104,48)
+    { !txContenido TextArea
+      MoveScaled(0,0,103,47)
+      #Public = True
+      Expand = True
+      ReadOnly = True
+    }
+  }
+}
