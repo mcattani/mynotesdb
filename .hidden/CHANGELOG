@@ -1,3 +1,11 @@
+* Mon Sep 19 2022 The Nerdy Apprentice <marianocattani@gmail.com> 0.3.56
+- Optimizado de código al guardar archivos temporales
+- Corrección de errores al utilizar los accesos rápidos
+- Agregado aviso de 'nueva versión'
+
+* Thu Sep 15 2022 The Nerdy Apprentice <marianocattani@gmail.com> 0.3.53
+- Corrección de código al crear archivos temporales
+
 * Mon Sep 12 2022 The Nerdy Apprentice <marianocattani@gmail.com> 0.3.51
 - Agregados botones de acceso rápido
 

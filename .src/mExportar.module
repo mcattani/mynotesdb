@@ -46,23 +46,13 @@ Public Sub ExportarAMD() ' Función que exporta el contenido con formato MD
 
 End
 
-Public Sub getTempName() As String 'Función para crear un archivo temporal
-
-  Dim Salida As String
-
-  Salida = Temp$()
-  Print salida
-  Return Salida
-
-End
-
 Public Sub ExportarHTLM() ' Función para exportar a HTML la entrada
 
   Dim tArchivo As File
   Dim Ftemp As String, Comando As String, Ruta As String
 
   ' Primero creamos el archivo temporal
-  FTemp = getTempName()
+  FTemp = Temp$()
 
   tArchivo = Open FTemp For Write Create
   Print #tArchivo, "**ID:** " & FMain.txid.Text & gb.CrLf
@@ -97,7 +87,7 @@ Public Sub ExportarDOCX() ' Función para exportar el archivo a DOCX
   Dim Ftemp As String, Comando As String, Ruta As String
 
   ' Primero creamos el archivo temporal
-  FTemp = getTempName()
+  FTemp = Temp$()
   tArchivo = Open FTemp For Write Create
   Print #tArchivo, "**ID:** " & FMain.txid.Text & gb.CrLf
   Print #tArchivo, "**Fecha:** " & FMain.txfecha.Text & gb.CrLf
@@ -131,7 +121,7 @@ Public Sub HmlPreview()
   Dim Ftemp As String, Comando As String
 
   ' Primero creamos el archivo temporal
-  FTemp = getTempName()
+  FTemp = Temp$()
   tArchivo = Open FTemp For Write Create
   Print #tArchivo, "**ID:** " & FMain.txid.Text & gb.CrLf
   Print #tArchivo, "**Fecha:** " & FMain.txfecha.Text & gb.CrLf

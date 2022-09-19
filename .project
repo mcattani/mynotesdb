@@ -2,7 +2,7 @@
 Title=MyNotesDB
 Startup=FMain
 Icon=icon.png
-Version=0.3.52
+Version=0.3.56
 Component=gb.image
 Component=gb.gui
 Component=gb.form
@@ -28,7 +28,7 @@ VendorPrefix=TNA
 Address=marianocattani@gmail.com
 Url=https://thenerdyapprentice.blogspot.com/
 License=General Public License
-PackageName=mynotesdb-0.3.51
+PackageName=mynotesdb-0.3.56
 CreateEachDirectory=1
 RuntimeVersion="3.15"
 Packager=1

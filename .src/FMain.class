@@ -6,6 +6,8 @@ Private sAppDir As String = User.home &/ "/MyNotesDB"
 
 Public Sub Form_Open()
 
+  'Dim vChk As String
+
   FMain.Text = Application.Title & " v." & Application.Version
   Settings.Read(Me)
 
@@ -17,6 +19,41 @@ Public Sub Form_Open()
 
   Conectar() ' Llamamos a la función para conectar a la base de datos
   Mostrar_Lista()
+
+  'vChk = GitVersion("https://raw.githubusercontent.com/mcattani/mynotesdb/master/.project")
+
+  'If Application.Version <> vChk Then
+  '  Message.Info(("Nueva versión enconrada!") & ": " & vChk)
+  'Endif
+
+End
+
+Public Function GitVersion(raw As String) As String 'Función para chequear si hay versiones nuevas
+
+  Dim s As String
+  Dim stx As String[]
+  Dim r As String
+  Dim v As String
+
+  v = ""
+  If Exist("/tmp/project.txt") Then
+    Shell "rm /tmp/project.txt" Wait
+  Endif
+
+  Shell "wget -O '/tmp/project.txt' '" & raw & "'" Wait
+  If Exist("/tmp/project.txt") Then
+    s = File.Load("/tmp/project.txt")
+    stx = Split(s, "\n")
+    For Each r In stx
+      If InStr(r, "Version=") Then
+        If Split(r, "=")[0] = "Version" Then
+          v = Split(r, "=")[1]
+          Break
+        Endif
+      Endif
+    Next
+  Endif
+  Return v
 
 End
 
@@ -141,6 +178,8 @@ Public Sub btnGuardarMod_Click()
   txContenido.ReadOnly = True
   txTags.ReadOnly = True
 
+  Mostrar_Lista
+
 End
 
 Public Sub mnNuevo_Click()
@@ -176,6 +215,8 @@ Public Sub mnNuevo_Click()
     Idn = CInt(Contenido["MAX(id)"]) + 1
   Endif
   txId.Text = Idn
+
+  Mostrar_Lista()
 
 End
 

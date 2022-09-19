@@ -186,16 +186,16 @@
     { Frame1 Frame
       MoveScaled(80,3,17,8)
       Text = ("Acceso Rápido")
-      { tbModificar ToolButton
-        MoveScaled(7,3,4,4)
-        ToolTip = ("Modificar entrada")
-        Picture = Picture["icon:/24/edit"]
-        Border = True
-      }
       { tbNuevo ToolButton
         MoveScaled(2,3,4,4)
         ToolTip = ("Agregar entrada")
         Picture = Picture["icon:/24/add"]
+        Border = True
+      }
+      { tbModificar ToolButton
+        MoveScaled(7,3,4,4)
+        ToolTip = ("Modificar entrada")
+        Picture = Picture["icon:/24/edit"]
         Border = True
       }
       { tbBorrar ToolButton
