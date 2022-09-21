@@ -2,6 +2,7 @@
 
 { Form Form
   MoveScaled(0,0,45,22)
+  ToolTip = ("Buscar en la base de datos")
   Text = ("Buscar")
   Icon = Picture["icon:/22/find"]
   Resizable = False

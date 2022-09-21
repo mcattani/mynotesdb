@@ -95,7 +95,7 @@
       #Public = True
       ToolTip = ("Entradas en la base de datos")
       Expand = True
-      PopupMenu = "mnExportarEntrada"
+      PopupMenu = "mnOpciones"
     }
   }
   { Panel1 Panel
@@ -185,6 +185,7 @@
     }
     { Frame1 Frame
       MoveScaled(80,3,17,8)
+      ToolTip = ("Acceso rápido a algunas de las funciones")
       Text = ("Acceso Rápido")
       { tbNuevo ToolButton
         MoveScaled(2,3,4,4)

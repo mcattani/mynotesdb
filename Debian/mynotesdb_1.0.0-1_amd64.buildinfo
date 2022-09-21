@@ -1,0 +1,31 @@
+Format: 1.0
+Source: mynotesdb
+Binary: mynotesdb
+Architecture: all source
+Version: 1.0.0-1
+Checksums-Md5:
+ a90c10b0ba4a80fad55e1db080269dd4 1456 mynotesdb_1.0.0-1.dsc
+ 2d31126a97a6eb56acd657aed0225ba7 85388 mynotesdb_1.0.0-1_all.deb
+Checksums-Sha1:
+ 6c3238bf2262bc628f99da0c2efc0f8c4a95d7d8 1456 mynotesdb_1.0.0-1.dsc
+ 1618ff538dd904010f25b66f17894f3b20141bd6 85388 mynotesdb_1.0.0-1_all.deb
+Checksums-Sha256:
+ fc9168c52172cc24f194809cbd4d7610b716b3cc00e6dbb11666ebf59f500d62 1456 mynotesdb_1.0.0-1.dsc
+ c0852c21461ce6de65c205751007198ee0377329a17a002a9f612e3dae38408c 85388 mynotesdb_1.0.0-1_all.deb
+Build-Origin: ArchLinux
+Build-Architecture: amd64
+Build-Date: Wed, 21 Sep 2022 18:41:01 -0300
+Environment:
+ DEB_BUILD_OPTIONS="parallel=4"
+ LANG="es_AR.UTF-8"
+ LC_ADDRESS="es_AR.UTF-8"
+ LC_ALL="es_AR.UTF-8"
+ LC_IDENTIFICATION="es_AR.UTF-8"
+ LC_MEASUREMENT="es_AR.UTF-8"
+ LC_MONETARY="es_AR.UTF-8"
+ LC_NAME="es_AR.UTF-8"
+ LC_NUMERIC="es_AR.UTF-8"
+ LC_PAPER="es_AR.UTF-8"
+ LC_TELEPHONE="es_AR.UTF-8"
+ LC_TIME="es_AR.UTF-8"
+ SOURCE_DATE_EPOCH="1663761600"

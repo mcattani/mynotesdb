@@ -3,7 +3,7 @@
 
 Durante la pandemia de Covid-19 muchas clases se dictaron de manera *virtual*.
 
-Este programa (hecho en *Gambas3*) nació de la necesidad de tener un lugar donde almacenar las notas tomadas en dichas clases. 
+Este programa (hecho en *Gambas3*) nació de la necesidad de tener un lugar donde almacenar de manera ordenada las notas tomadas en dichas clases. 
 
 El programa utiliza una base de datos **Sqlite3** para almacenar toda la información. 
 
@@ -16,14 +16,14 @@ El programa utiliza una base de datos **Sqlite3** para almacenar toda la informa
 - Tags (etiquetas/palabras clave)
 - Contenido
 
-El programa puede exportar las entradas a diversos formatos (tomando el lenguaje *Markdown* como referencia)
+Se pueden exportar las entradas a diversos formatos (tomando el lenguaje *Markdown* como referencia)
 
 - Texto plano .txt
 - Texto plano .md
 - Word (docx)
 - HTML
 
-Para esto último es necesario tener instalado **pandoc**
+Para esto último es necesario tener instalado **pandoc**.
 
 > sudo apt install pandoc
 
@@ -34,7 +34,3 @@ Dejo en las carpetas **Archlinux** y **Debian** los instaladores correspondiente
 Más información en el link de arriba.
 
 Saludos!
-
-
-
-

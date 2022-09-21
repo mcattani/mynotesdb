@@ -143,6 +143,11 @@ Public Sub HmlPreview()
   ftemp = ftemp & ".html" 'Agregamos la extensión html a la variable para que coincida con el archivo creado
 
   Wait 0.5
+
+  ' A veces se produce un error, no sé por qué, en donde dice que no encuentra el archivo (ftemp)
+  ' pero el archivo existe, si se vuelve a realizar el intento se abre sin problema.
+  Try Desktop.Open(ftemp)
+Catch
   Desktop.Open(ftemp)
 
 End

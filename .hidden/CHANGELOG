@@ -1,3 +1,11 @@
+* Wed Sep 21 2022 The Nerdy Apprentice <marianocattani@gmail.com> 1.0.0
+- Versión para publicación
+- Agregados tooltips
+
+* Wed Sep 21 2022 The Nerdy Apprentice <marianocattani@gmail.com> 0.3.57
+- Correccioń error que aparece (no siempre) en previsualizar en HTML
+- Modificación de menú sobre lista de entradas
+
 * Mon Sep 19 2022 The Nerdy Apprentice <marianocattani@gmail.com> 0.3.56
 - Optimizado de código al guardar archivos temporales
 - Corrección de errores al utilizar los accesos rápidos
