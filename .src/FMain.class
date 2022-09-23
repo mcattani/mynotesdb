@@ -125,6 +125,11 @@ Public Sub VLista_Select() 'Función que nos muestra la información de la BD cu
   txContenido.Text = Contenido!contenido
   txTags.Text = Contenido!tags
 
+  'Para que el textarea y los textbox que puedan llegar a ser extensos se muestren desde el inicio
+  txContenido.Pos = 0
+  txClase.Pos = 0
+  txTags.Pos = 0
+
 End
 
 Public Sub mnSalir_Click()

@@ -1,3 +1,9 @@
+* Fri Sep 23 2022 The Nerdy Apprentice <marianocattani@gmail.com> 1.0.4
+- Idem anterior con los textbox de nombre de clase y tags
+
+* Fri Sep 23 2022 The Nerdy Apprentice <marianocattani@gmail.com> 1.0.2
+- Corregido que los textarea se muestren desde el inicio al ser seleccionados
+
 * Wed Sep 21 2022 The Nerdy Apprentice <marianocattani@gmail.com> 1.0.0
 - Versión para publicación
 - Agregados tooltips
