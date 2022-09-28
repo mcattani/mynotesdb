@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Wed, 28 Sep 2022 12:00:00 +0000
+Source: mynotesdb
+Binary: mynotesdb
+Architecture: source all
+Version: 1.0.5-1
+Distribution: unstable
+Urgency: low
+Maintainer: The Nerdy Apprentice <marianocattani@gmail.com>
+Changed-By: The Nerdy Apprentice <marianocattani@gmail.com>
+Description:
+ mynotesdb  - Aplicación para guardar apuntes de clase. El progama utiliza un..
+Changes:
+ mynotesdb (1.0.5-1) unstable; urgency=low
+ .
+   * Agregado búsqueda de versión nueva al iniciar el programa
+Checksums-Sha1:
+ f94ae764cf18eb092d4ee9b2a56553452f50ef5d 1456 mynotesdb_1.0.5-1.dsc
+ eeba24f465d1cb5d90674f2cf4c65cc19876a700 2470 mynotesdb_1.0.5-1.diff.gz
+ 44b183af6e28fb9e7e5b93bb4aab253089454452 85592 mynotesdb_1.0.5-1_all.deb
+ 5536c4157d644c361083ab2edf49dbb77842ad55 1053 mynotesdb_1.0.5-1_amd64.buildinfo
+Checksums-Sha256:
+ 93b8e87d661c477acca1da0ecfca7b35c683558031dd1e414118315edcf7e060 1456 mynotesdb_1.0.5-1.dsc
+ 8d6badc16d9a327a32c35f760e15b9210f8ddbb979882250c9e6e543bbfbe894 2470 mynotesdb_1.0.5-1.diff.gz
+ a35bb2b50dd0bf2056d0584801d8ef47b58fd1ed6bdef2f60925cc017fb9fcff 85592 mynotesdb_1.0.5-1_all.deb
+ c7cc314d1c885ac70cf456d0d94a553a8b0fc283ea85dfbac07329dae18b4ee6 1053 mynotesdb_1.0.5-1_amd64.buildinfo
+Files:
+ be95993c2ac0a657f4a14c54db40eb5e 1456 contrib/utils optional mynotesdb_1.0.5-1.dsc
+ 869a26957b1772480065792e74014867 2470 contrib/utils optional mynotesdb_1.0.5-1.diff.gz
+ 756c75cc1ae350954845f720e3586875 85592 contrib/utils optional mynotesdb_1.0.5-1_all.deb
+ 0f65acdd19816e132c12a85ee92e79b3 1053 contrib/utils optional mynotesdb_1.0.5-1_amd64.buildinfo

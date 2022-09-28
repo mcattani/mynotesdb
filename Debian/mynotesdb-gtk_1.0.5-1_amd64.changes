@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Wed, 28 Sep 2022 12:00:00 +0000
+Source: mynotesdb-gtk
+Binary: mynotesdb-gtk
+Architecture: source all
+Version: 1.0.5-1
+Distribution: unstable
+Urgency: low
+Maintainer: The Nerdy Apprentice <marianocattani@gmail.com>
+Changed-By: The Nerdy Apprentice <marianocattani@gmail.com>
+Description:
+ mynotesdb-gtk - gtk package for MyNotesDB
+Changes:
+ mynotesdb-gtk (1.0.5-1) unstable; urgency=low
+ .
+   * Agregado búsqueda de versión nueva al iniciar el programa
+Checksums-Sha1:
+ 2beeba2be40505bb5e20a748722a6d6b8db8a455 558 mynotesdb-gtk_1.0.5-1.dsc
+ 1e0b4fa129a7c253c539adf1454a3baf5b2272f1 2019 mynotesdb-gtk_1.0.5-1.tar.gz
+ 10790cc96ed59088cf5baaa5ec1cb6429236685c 2288 mynotesdb-gtk_1.0.5-1_all.deb
+ f5298e52911688b4aebb93308362156ea1a591ef 1079 mynotesdb-gtk_1.0.5-1_amd64.buildinfo
+Checksums-Sha256:
+ d5f806f2e1104f083d0e1add36fa9c072623c918d5aed599dc5dc046ebdfed0a 558 mynotesdb-gtk_1.0.5-1.dsc
+ c9ec72dd2b5c0bb848d542e0bb0f2e7e87cca2210aab0a0239826c5ce62d7958 2019 mynotesdb-gtk_1.0.5-1.tar.gz
+ ee15e3a228ff0b9c62948bb417e5a15f8457f6850057a7e44080d48001c87039 2288 mynotesdb-gtk_1.0.5-1_all.deb
+ b38d6fa6b402b3ad6ffcca20eb88bb1c4e89138020dc777e7408c993cd97bbc1 1079 mynotesdb-gtk_1.0.5-1_amd64.buildinfo
+Files:
+ 36467d34ae4af3614557d44d1e48e289 558 contrib/utils optional mynotesdb-gtk_1.0.5-1.dsc
+ f32393fe0418357e1788136d443e4d8a 2019 contrib/utils optional mynotesdb-gtk_1.0.5-1.tar.gz
+ 82fd57b8b192ffa3f27f3eac365b5a2a 2288 contrib/utils optional mynotesdb-gtk_1.0.5-1_all.deb
+ b3df80014607857b4bcf8e9ea7cc8cc2 1079 contrib/utils optional mynotesdb-gtk_1.0.5-1_amd64.buildinfo

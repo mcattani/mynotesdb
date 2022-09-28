@@ -6,7 +6,7 @@ Private sAppDir As String = User.home &/ "/MyNotesDB"
 
 Public Sub Form_Open()
 
-  'Dim vChk As String
+  Dim vChk As String
 
   FMain.Text = Application.Title & " v." & Application.Version
   Settings.Read(Me)
@@ -20,11 +20,11 @@ Public Sub Form_Open()
   Conectar() ' Llamamos a la función para conectar a la base de datos
   Mostrar_Lista()
 
-  'vChk = GitVersion("https://raw.githubusercontent.com/mcattani/mynotesdb/master/.project")
+  vChk = GitVersion("https://raw.githubusercontent.com/mcattani/mynotesdb/master/.project")
 
-  'If Application.Version <> vChk Then
-  '  Message.Info(("Nueva versión enconrada!") & ": " & vChk)
-  'Endif
+  If Application.Version <> vChk Then
+    Message.Info(("Nueva versión enconrada!") & ": " & vChk)
+  Endif
 
 End
 

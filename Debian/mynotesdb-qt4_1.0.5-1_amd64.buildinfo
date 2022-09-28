@@ -1,0 +1,31 @@
+Format: 1.0
+Source: mynotesdb-qt4
+Binary: mynotesdb-qt4
+Architecture: all source
+Version: 1.0.5-1
+Checksums-Md5:
+ 72c3a44c97cdff9aaf6b36fcd8837468 558 mynotesdb-qt4_1.0.5-1.dsc
+ f7924dfe6e3423feb81c808af4b18961 2288 mynotesdb-qt4_1.0.5-1_all.deb
+Checksums-Sha1:
+ d30fe6e2c1eb7470413b0caeeb815179e25c21cd 558 mynotesdb-qt4_1.0.5-1.dsc
+ 37605d794e7f078315ec094db0b5f9e3414aa171 2288 mynotesdb-qt4_1.0.5-1_all.deb
+Checksums-Sha256:
+ 14cf44c4f0033205119b24eec1242947436721609a2c153d79eba6d3ec93ee39 558 mynotesdb-qt4_1.0.5-1.dsc
+ 08568019338df274ccc3517198773884f25c20e18940ce8af9e0037aca2450b6 2288 mynotesdb-qt4_1.0.5-1_all.deb
+Build-Origin: ArchLinux
+Build-Architecture: amd64
+Build-Date: Wed, 28 Sep 2022 19:07:49 -0300
+Environment:
+ DEB_BUILD_OPTIONS="parallel=4"
+ LANG="es_AR.UTF-8"
+ LC_ADDRESS="es_AR.UTF-8"
+ LC_ALL="es_AR.UTF-8"
+ LC_IDENTIFICATION="es_AR.UTF-8"
+ LC_MEASUREMENT="es_AR.UTF-8"
+ LC_MONETARY="es_AR.UTF-8"
+ LC_NAME="es_AR.UTF-8"
+ LC_NUMERIC="es_AR.UTF-8"
+ LC_PAPER="es_AR.UTF-8"
+ LC_TELEPHONE="es_AR.UTF-8"
+ LC_TIME="es_AR.UTF-8"
+ SOURCE_DATE_EPOCH="1664366400"

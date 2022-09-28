@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Wed, 28 Sep 2022 12:00:00 +0000
+Source: mynotesdb-qt4
+Binary: mynotesdb-qt4
+Architecture: source all
+Version: 1.0.5-1
+Distribution: unstable
+Urgency: low
+Maintainer: The Nerdy Apprentice <marianocattani@gmail.com>
+Changed-By: The Nerdy Apprentice <marianocattani@gmail.com>
+Description:
+ mynotesdb-qt4 - qt4 package for MyNotesDB
+Changes:
+ mynotesdb-qt4 (1.0.5-1) unstable; urgency=low
+ .
+   * Agregado búsqueda de versión nueva al iniciar el programa
+Checksums-Sha1:
+ d30fe6e2c1eb7470413b0caeeb815179e25c21cd 558 mynotesdb-qt4_1.0.5-1.dsc
+ 0cefe1c69bbe40324b2752b8b84ed02b8f5fb209 1932 mynotesdb-qt4_1.0.5-1.tar.gz
+ 37605d794e7f078315ec094db0b5f9e3414aa171 2288 mynotesdb-qt4_1.0.5-1_all.deb
+ e9851155c4c3a2ab1397ca485a139434c77a14d7 1079 mynotesdb-qt4_1.0.5-1_amd64.buildinfo
+Checksums-Sha256:
+ 14cf44c4f0033205119b24eec1242947436721609a2c153d79eba6d3ec93ee39 558 mynotesdb-qt4_1.0.5-1.dsc
+ 2f0b97755a9d0ff417d24f3dee9b7f555f99dc98a0036facf2bb16fb7c4501fc 1932 mynotesdb-qt4_1.0.5-1.tar.gz
+ 08568019338df274ccc3517198773884f25c20e18940ce8af9e0037aca2450b6 2288 mynotesdb-qt4_1.0.5-1_all.deb
+ aa7a171177ce73be1275cda351bbf1aabd0f417ca4f399fde0cc54cc315d0083 1079 mynotesdb-qt4_1.0.5-1_amd64.buildinfo
+Files:
+ 72c3a44c97cdff9aaf6b36fcd8837468 558 contrib/utils optional mynotesdb-qt4_1.0.5-1.dsc
+ 34d3dc915e5cf87dc69b7bcdadf34ecb 1932 contrib/utils optional mynotesdb-qt4_1.0.5-1.tar.gz
+ f7924dfe6e3423feb81c808af4b18961 2288 contrib/utils optional mynotesdb-qt4_1.0.5-1_all.deb
+ ea21a9219921240378923213c5126521 1079 contrib/utils optional mynotesdb-qt4_1.0.5-1_amd64.buildinfo
