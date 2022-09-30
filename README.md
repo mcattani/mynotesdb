@@ -1,6 +1,8 @@
 # MyNotesDB
 ## [https://thenerdyapprentice.blogspot.com/](https://thenerdyapprentice.blogspot.com/) 
 
+##(en construcción)
+
 Durante la pandemia de Covid-19 muchas clases se dictaron de manera *virtual*.
 
 Este programa (hecho en *Gambas3*) nació de la necesidad de tener un lugar donde almacenar de manera ordenada las notas tomadas en dichas clases. 

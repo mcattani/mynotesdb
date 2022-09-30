@@ -146,8 +146,10 @@ Public Sub HmlPreview()
 
   ' A veces se produce un error, no sé por qué, en donde dice que no encuentra el archivo (ftemp)
   ' pero el archivo existe, si se vuelve a realizar el intento se abre sin problema.
-  Try Desktop.Open(ftemp)
-Catch
-  Desktop.Open(ftemp)
+  If Exist(ftemp)
+    Desktop.Open(ftemp, True)
+  Else
+    Message.Warning("Error al previsualizar en hmtl, por favor vuelva a intentarlo")
+  Endif
 
 End

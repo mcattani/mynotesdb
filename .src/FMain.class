@@ -8,7 +8,7 @@ Public Sub Form_Open()
 
   Dim vChk As String
 
-  FMain.Text = Application.Title & " v." & Application.Version
+  FMain.Text = Application.Title & " v" & Application.Version
   Settings.Read(Me)
 
   'Chequeamos que exista el directorio con la base de datos

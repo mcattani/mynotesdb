@@ -1,5 +1,6 @@
-* Wed Sep 28 2022 The Nerdy Apprentice <marianocattani@gmail.com> 1.0.5
-- Agregado búsqueda de versión nueva al iniciar el programa
+* Fri Sep 30 2022 The Nerdy Apprentice <marianocattani@gmail.com> 1.0.7
+- Agregada función de búsqueda de nueva versión
+- Mejora de código
 
 * Fri Sep 23 2022 The Nerdy Apprentice <marianocattani@gmail.com> 1.0.4
 - Idem anterior con los textbox de nombre de clase y tags
@@ -81,4 +82,3 @@
 
 * Wed Aug 31 2022 The Nerdy Apprentice <marianocattani@gmail.com> 0.0.19
 - Lanzamiento inicial
-
