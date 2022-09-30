@@ -2,19 +2,19 @@ Format: 1.0
 Source: mynotesdb
 Binary: mynotesdb
 Architecture: all source
-Version: 1.0.7-1
+Version: 1.0.8-1
 Checksums-Md5:
- d6e93d22cc8d49c03581113edf07fe45 1456 mynotesdb_1.0.7-1.dsc
- f4df7d1f1f3f001232cc697c4acbeaec 85628 mynotesdb_1.0.7-1_all.deb
+ ea0293f8d01b2d26dbd0633942265e5c 1456 mynotesdb_1.0.8-1.dsc
+ bfd224bdf70d9b7b289ccf63efb8a536 85628 mynotesdb_1.0.8-1_all.deb
 Checksums-Sha1:
- e7753268ed60fc8e427c19858abc157b65571b9a 1456 mynotesdb_1.0.7-1.dsc
- 7b3ad812eb564895d3848e3a687f66f148206d67 85628 mynotesdb_1.0.7-1_all.deb
+ f4bef124835c74ff5200a55e18659d041417115b 1456 mynotesdb_1.0.8-1.dsc
+ 2b36e9e6cae11db229a4fe074a459ec47667d8ae 85628 mynotesdb_1.0.8-1_all.deb
 Checksums-Sha256:
- 7ba2d3b630191450af27249c63bc3efeb6bf340d9ffcfa4e21277299741f09a3 1456 mynotesdb_1.0.7-1.dsc
- 38323f6f3fdf82a37b65ff4e54f537ac0b34804ff17768a2ea69009fa5669459 85628 mynotesdb_1.0.7-1_all.deb
+ cd4ec607ff2d650ab116de32310e1f2831ff62ad8387f9e3c48c7fc836526bf0 1456 mynotesdb_1.0.8-1.dsc
+ f27814d0e972b0c81c6bce217494971d80aa0be6ec58e199717781404bf6e930 85628 mynotesdb_1.0.8-1_all.deb
 Build-Origin: ArchLinux
 Build-Architecture: amd64
-Build-Date: Fri, 30 Sep 2022 18:04:42 -0300
+Build-Date: Fri, 30 Sep 2022 18:22:19 -0300
 Environment:
  DEB_BUILD_OPTIONS="parallel=4"
  LANG="es_AR.UTF-8"
