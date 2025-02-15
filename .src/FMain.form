@@ -39,6 +39,10 @@
       Text = ("Acerca de") & "..."
       Picture = Picture["icon:/22/info"]
     }
+    { mnBuscarActualizaciones Menu
+      Text = ("Buscar Actualizaciones")
+      Picture = Picture["icon:/medium/update"]
+    }
   }
   { mnDB Menu
     Text = ("Base de Datos")
@@ -158,7 +162,7 @@
       Text = ("Fecha:")
     }
     { !btnRefresh Button
-      MoveScaled(79,12,18,5)
+      MoveScaled(80,12,18,5)
       #Public = True
       Visible = False
       Text = ("Recargar Lista")
@@ -184,7 +188,7 @@
       Picture = Picture["icon:/22/save-as"]
     }
     { Frame1 Frame
-      MoveScaled(80,3,17,8)
+      MoveScaled(80,3,19,8)
       ToolTip = ("Acceso rápido a algunas de las funciones")
       Text = ("Acceso Rápido")
       { tbNuevo ToolButton

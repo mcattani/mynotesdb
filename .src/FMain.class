@@ -5,60 +5,23 @@ Private Contenido As Result
 Private sAppDir As String = User.home &/ "/MyNotesDB"
 
 Public Sub Form_Open()
-
-  Dim vChk As String
-
+  
   FMain.Text = Application.Title & " v" & Application.Version
   Settings.Read(Me)
-
+  
   'Chequeamos que exista el directorio con la base de datos
   If Not Exist(sAppDir) Then
     Mkdir sAppDir
     Copy "./db_clases.sqlite" To sAppDir &/ "db_clases.sqlite"
   Endif
-
-  Conectar() ' Llamamos a la función para conectar a la base de datos
+  
+  Conectar() 'Llamamos a la función para conectar a la base de datos
   Mostrar_Lista()
-
-  vChk = GitVersion("https://raw.githubusercontent.com/mcattani/mynotesdb/master/.project")
-
-  If Application.Version <> vChk Then
-    Message.Info(("Nueva versión enconrada!") & ": " & vChk)
-  Endif
-
-End
-
-Public Function GitVersion(raw As String) As String 'Función para chequear si hay versiones nuevas
-
-  Dim s As String
-  Dim stx As String[]
-  Dim r As String
-  Dim v As String
-
-  v = ""
-  If Exist("/tmp/project.txt") Then
-    Shell "rm /tmp/project.txt" Wait
-  Endif
-
-  Shell "wget -O '/tmp/project.txt' '" & raw & "'" Wait
-  If Exist("/tmp/project.txt") Then
-    s = File.Load("/tmp/project.txt")
-    stx = Split(s, "\n")
-    For Each r In stx
-      If InStr(r, "Version=") Then
-        If Split(r, "=")[0] = "Version" Then
-          v = Split(r, "=")[1]
-          Break
-        Endif
-      Endif
-    Next
-  Endif
-  Return v
-
+  
 End
 
 Public Sub Mostrar_Lista() 'Función que rellena con las fechas y el nombre del autor el List View
-
+  
   Contenido = Conn.Exec("select fecha, autor, id from clases")
   If Contenido.Available Then
     VLista.Clear
@@ -67,11 +30,11 @@ Public Sub Mostrar_Lista() 'Función que rellena con las fechas y el nombre del 
       Contenido.MoveNext
     Wend
   Endif
-
+  
 End
 
-Public Sub Conectar() ' Función para conectarnos a la base de datos
-
+Public Sub Conectar() 'Función para conectarnos a la base de datos
+  
   Conn = New Connection
   Conn.Type = "sqlite"
   Conn.Host = sAppDir
@@ -82,40 +45,40 @@ Public Sub Conectar() ' Función para conectarnos a la base de datos
     Conn = Null
     Quit
   Endif
-
+  
 End
 
 Public Sub Form_KeyRelease()
-
+  
   If Key.Code = Key.Esc Then
     Settings.Write(Me)
     Conn.Close
     Quit
   Endif
-
+  
 End
 
 Public Sub Form_Resize()
   ' Todavía tengo problemas para que las ventanas hagan automaticamente lo que yo quiera así que lo hago de manera manual
-
+  
   VBox1.Height = FMain.Height - 39
   VBox2.Height = FMain.Height - 230
   vbox2.Width = FMain.Width - 315
-
+  
 End
 
 Public Sub Form_Close()
-
+  
   Settings.Write(Me)
   Conn.Close
   Quit
-
+  
 End
 
 Public Sub VLista_Select() 'Función que nos muestra la información de la BD cuando hacemos click en el ListView
   'select * from clases where id = 1
   'Print VLista.Item.Key
-
+  
   Contenido = Conn.Exec("select * from clases where id = " & VLista.item.key)
   txId.Text = Contenido!id
   txFecha.Text = Contenido!fecha
@@ -124,29 +87,29 @@ Public Sub VLista_Select() 'Función que nos muestra la información de la BD cu
   txLugar.Text = Contenido!lugar
   txContenido.Text = Contenido!contenido
   txTags.Text = Contenido!tags
-
+  
   'Para que el textarea y los textbox que puedan llegar a ser extensos se muestren desde el inicio
   txContenido.Pos = 0
   txClase.Pos = 0
   txTags.Pos = 0
-
+  
 End
 
 Public Sub mnSalir_Click()
-
+  
   Settings.Write(Me)
   Try Conn.Close
   Quit
-
+  
 End
 
 Public Sub mnModificar_Click()
-
+  
   If txId.Text = "" Then
     Message.Info("Debe seleccionar una entrada primero.")
     Return
   Endif
-
+  
   'Permitios la modificación de los textbox
   txFecha.ReadOnly = False
   txAutor.ReadOnly = False
@@ -155,13 +118,13 @@ Public Sub mnModificar_Click()
   txLugar.ReadOnly = False
   txContenido.ReadOnly = False
   txTags.ReadOnly = False
-
+  
   btnGuardarMod.visible = True
-
+  
 End
 
 Public Sub btnGuardarMod_Click()
-
+  
   Contenido = Conn.Edit("clases", "id=" & txId.Text)
   Contenido!id = txId.Text
   Contenido!fecha = txFecha.Text
@@ -173,7 +136,7 @@ Public Sub btnGuardarMod_Click()
   Contenido.Update
   Message.Info("Modificación guardada.")
   btnGuardarMod.visible = False
-
+  
   'Volvemos a bloquear la modificación de los textbox
   txFecha.ReadOnly = True
   txAutor.ReadOnly = True
@@ -182,16 +145,16 @@ Public Sub btnGuardarMod_Click()
   txLugar.ReadOnly = True
   txContenido.ReadOnly = True
   txTags.ReadOnly = True
-
+  
   Mostrar_Lista
-
+  
 End
 
 Public Sub mnNuevo_Click()
   ' SELECT MAX(id) FROM clases LIMIT 1 --> Nos devuelve el total de IDs en la tabla
-
+  
   Dim Idn As Integer
-
+  
   'Limpiamos todos los campos y habilitamos botón para guardar
   txId.Text = ""
   txFecha.Text = ""
@@ -201,7 +164,7 @@ Public Sub mnNuevo_Click()
   txContenido.Text = ""
   txTags.Text = ""
   btnGuardar.visible = True
-
+  
   'Permitios la modificación de los textbox
   txFecha.ReadOnly = False
   txAutor.ReadOnly = False
@@ -210,7 +173,7 @@ Public Sub mnNuevo_Click()
   txLugar.ReadOnly = False
   txContenido.ReadOnly = False
   txTags.ReadOnly = False
-
+  
   'Obtenemos el último ID y sumamos +1 para el nuevo registro
   Contenido = Conn.Exec("SELECT MAX(id) FROM clases LIMIT 1")
   ' Si no hay ninguna entrada entonces arrancamos desde 0
@@ -220,13 +183,13 @@ Public Sub mnNuevo_Click()
     Idn = CInt(Contenido["MAX(id)"]) + 1
   Endif
   txId.Text = Idn
-
+  
   Mostrar_Lista()
-
+  
 End
 
 Public Sub btnGuardar_Click()
-
+  
   Contenido = Conn.Create("clases")
   Contenido!id = txId.Text
   Contenido!fecha = txFecha.Text
@@ -236,10 +199,10 @@ Public Sub btnGuardar_Click()
   Contenido!contenido = txContenido.Text
   Contenido!tags = txTags.Text
   Contenido.Update
-
+  
   btnGuardar.visible = False
   Message.Info("Entrada guardada. ")
-
+  
   'Permitios la modificación de los textbox
   txFecha.ReadOnly = False
   txAutor.ReadOnly = False
@@ -248,23 +211,23 @@ Public Sub btnGuardar_Click()
   txLugar.ReadOnly = False
   txContenido.ReadOnly = False
   txTags.ReadOnly = False
-
+  
   Mostrar_Lista() ' Refrescamos la lista de entradas
-
+  
 End
 
 Public Sub mnEliminar_Click()
-
+  
   'Chequeamos primero que se haya elegido una entrada
   If txId.Text = "" Then
     Message.Info("Debe primero seleccionarse la entrada a borrar.")
     Return
   Endif
-
+  
   If Message.Question("¿Desea borrar la entrada?", "Si", "No") = 1 Then
     Contenido = Conn.Exec("delete from clases where id=" & txId.Text)
   Endif
-
+  
   'Limpiamos los campos
   txId.Text = ""
   txFecha.Text = ""
@@ -273,148 +236,154 @@ Public Sub mnEliminar_Click()
   txLugar.Text = ""
   txContenido.Text = ""
   txTags.Text = ""
-
+  
   VLista.Clear
   Mostrar_Lista()
-
+  
 End
 
 Public Sub mnAbout_Click()
-
+  
   frmAbout.Show
-
+  
 End
 
 Public Sub mnuVacuumInfo_Click()
-
-  Desktop.Open("https://www.sqlite.org/matrix/lang_vacuum.html")
-
+  
+  Desktop.Open("https://www.sqlite.org/lang_vacuum.html")
+  
 End
 
 Public Sub mnuVacuum_Click()
-
+  
   Try Conn.Exec("vacuum")
   If Error Then
     Message.Warning("No se ha podido completar la acción. " & Error.Code)
     Return
   Endif
-
+  
   Message.Info("Se ha completado la limpieza.")
-
+  
 End
 
 Public Sub mnUbicacion_Click()
-
+  
   'Message.Info("Ubicación de la base: " & Application.path)
   Desktop.Open(sAppDir)
-
+  
 End
 
 Public Sub mnETexto_Click()
-
+  
   If txId.Text = "" Then
     Message.Warning("Debe primero elegir una entrada.")
     Return
   Endif
-
+  
   mExportar.ExportarATXT
-
+  
 End
 
 Public Sub mnuPrevMark_Click()
-
+  
   If txId.Text = "" Then
     Message.Warning("Debe primero elegir una entrada.")
     Return
   Endif
-
+  
   mExportar.ExportarAMD
-
+  
 End
 
 Public Sub mnExportarHTML_Click()
-
+  
   If txId.Text = "" Then
     Message.Warning("Debe primero elegir una entrada.")
     Return
   Endif
-
+  
   If Not Exist("/usr/bin/pandoc") Then
     Message.Warning("Debe tener instalado el programa <b>pandoc</b> para realizar esta acción.")
   Endif
-
+  
   mExportar.ExportarHTLM ' Llamamos a la función para exportar a HTML
-
+  
 End
 
 Public Sub mnExportarDOCX_Click()
-
+  
   If txId.Text = "" Then
     Message.Warning("Debe primero elegir una entrada.")
     Return
   Endif
-
+  
   If Not Exist("/usr/bin/pandoc") Then
     Message.Warning("Debe tener instalado el programa <b>pandoc</b> para realizar esta acción.")
     Return
   Endif
-
+  
   mExportar.ExportarDOCX
-
+  
 End
 
 Public Sub mnuPrevHtml_Click()
-
+  
   If txId.Text = "" Then
     Message.Warning("Debe primero elegir una entrada.")
     Return
   Endif
-
+  
   If Not Exist("/usr/bin/pandoc") Then
     Message.Warning("Debe tener instalado el programa <b>pandoc</b> para realizar esta acción.")
     Return
   Endif
-
+  
   mExportar.HmlPreview
-
+  
 End
 
 Public Sub mnuReload_Click()
-
+  
   VLista.Clear
   Mostrar_Lista
-
+  
 End
 
 Public Sub mnuBuscar_Click()
-
+  
   frmBuscar.Show
-
+  
 End
 
 Public Sub btnRefresh_Click()
   'Este botón aparece tras realizar una búsqueda
-
+  
   VLista.Clear
   Mostrar_Lista
   btnRefresh.Visible = False
-
+  
 End
 
 Public Sub tbNuevo_Click()
-
+  
   mnNuevo_Click()
-
+  
 End
 
 Public Sub tbModificar_Click()
-
+  
   mnModificar_Click
-
+  
 End
 
 Public Sub tbBorrar_Click()
-
+  
   mnEliminar_Click
+  
+End
 
+Public Sub mnBuscarActualizaciones_Click()
+  
+  buscar_act.Buscar_Actualizacion()
+  
 End

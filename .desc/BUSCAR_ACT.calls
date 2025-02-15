@@ -1,0 +1,8 @@
+[buscar_act.GitVersion]:9:Buscar_Actualizacion
+[Application.Version]:11:Buscar_Actualizacion
+[Message.Info]:13:Buscar_Actualizacion
+[Message.Info]:16:Buscar_Actualizacion
+[Message.Info]:18:Buscar_Actualizacion
+[File.Load]:37:GitVersion
+[?._get]:41:GitVersion
+[?._get]:42:GitVersion

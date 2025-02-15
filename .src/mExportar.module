@@ -1,14 +1,14 @@
 ' Gambas module file
 
 Public Sub ExportarATXT() 'Función para guardar la entrada com texto plano
-
+  
   Dim gArchivo As File
-
+  
   Dialog.Title = "Guardar arhivo como..."
   Dialog.Filter = ["*.txt", "Archivo de texto"]
   Dialog.AutoExt = True
   Dialog.SaveFile
-
+  
   gArchivo = Open Dialog.Path For Write Create
   Print #gArchivo, "ID: " & FMain.txid.Text
   Print #gArchivo, "Fecha: " & FMain.txfecha.Text
@@ -17,21 +17,21 @@ Public Sub ExportarATXT() 'Función para guardar la entrada com texto plano
   Print #gArchivo, "Lugar: " & FMain.txlugar.Text
   Print #gArchivo, "Tags: " & FMain.txTags.Text & gb.CrLf
   Print #gArchivo, FMain.txContenido.Text
-
+  
   Message.Info("Archivo exportado de manera exitosa.")
   Close gArchivo
-
+  
 End
 
 Public Sub ExportarAMD() ' Función que exporta el contenido con formato MD
-
+  
   Dim gArchivo As File
-
+  
   Dialog.Title = "Guardar arhivo como..."
   Dialog.Filter = ["*.md", "Archivo Markdown"]
   Dialog.AutoExt = True
   Dialog.SaveFile
-
+  
   gArchivo = Open Dialog.Path For Write Create
   Print #gArchivo, "**ID:** " & FMain.txid.Text & gb.CrLf
   Print #gArchivo, "**Fecha:** " & FMain.txfecha.Text & gb.CrLf
@@ -41,19 +41,19 @@ Public Sub ExportarAMD() ' Función que exporta el contenido con formato MD
   Print #gArchivo, "**Tags:** " & FMain.txTags.Text & gb.CrLf
   Print #gArchivo, FMain.txContenido.Text
   Close gArchivo
-
+  
   Message.Info("Archivo exportado de manera exitosa.")
-
+  
 End
 
 Public Sub ExportarHTLM() ' Función para exportar a HTML la entrada
-
+  
   Dim tArchivo As File
   Dim Ftemp As String, Comando As String, Ruta As String
-
+  
   ' Primero creamos el archivo temporal
   FTemp = Temp$()
-
+  
   tArchivo = Open FTemp For Write Create
   Print #tArchivo, "**ID:** " & FMain.txid.Text & gb.CrLf
   Print #tArchivo, "**Fecha:** " & FMain.txfecha.Text & gb.CrLf
@@ -63,29 +63,29 @@ Public Sub ExportarHTLM() ' Función para exportar a HTML la entrada
   Print #tArchivo, "**Tags:** " & FMain.txTags.Text & gb.CrLf
   Print #tArchivo, FMain.txContenido.Text
   Close tArchivo
-
+  
   Dialog.Title = "Guardar arhivo como..."
   Dialog.Filter = ["*.html", "Archivo Html"]
   Dialog.AutoExt = True
   Dialog.SaveFile
   Ruta = Dialog.Path
-
+  
   'Convertimos el archivo creado a HTML usando 'PANDOC'
   Comando = "/usr/bin/pandoc " & ftemp & " -f markdown -t html -s --metadata title=' ' -o " & Ruta
-
+  
   Try Shell Comando
   If Error Then
     Message.Warning("No se ha podido convertir el archivo. " & Error.Text)
   Endif
   Message.Info("Archivo exportado de manera exitosa.")
-
+  
 End
 
 Public Sub ExportarDOCX() ' Función para exportar el archivo a DOCX
-
+  
   Dim tArchivo As File
   Dim Ftemp As String, Comando As String, Ruta As String
-
+  
   ' Primero creamos el archivo temporal
   FTemp = Temp$()
   tArchivo = Open FTemp For Write Create
@@ -97,29 +97,29 @@ Public Sub ExportarDOCX() ' Función para exportar el archivo a DOCX
   Print #tArchivo, "**Tags:** " & FMain.txTags.Text & gb.CrLf
   Print #tArchivo, FMain.txContenido.Text
   Close tArchivo
-
+  
   Dialog.Title = "Guardar arhivo como..."
   Dialog.Filter = ["*.docx", "Archivo Word"]
   Dialog.AutoExt = True
   Dialog.SaveFile
   Ruta = Dialog.Path
-
+  
   'Convertimos el archivo de origen a DOCX usando 'pandoc'
   Comando = "/usr/bin/pandoc " & ftemp & " -f markdown -t docx -s -o " & Ruta
-
+  
   Try Shell Comando
   If Error Then
     Message.Warning("No se ha podido convertir el archivo. " & Error.Text)
   Endif
   Message.Info("Archivo exportado de manera exitosa.")
-
+  
 End
 
 Public Sub HmlPreview()
-
+  
   Dim tArchivo As File
   Dim Ftemp As String, Comando As String
-
+  
   ' Primero creamos el archivo temporal
   FTemp = Temp$()
   tArchivo = Open FTemp For Write Create
@@ -131,25 +131,25 @@ Public Sub HmlPreview()
   Print #tArchivo, "**Tags:** " & FMain.txTags.Text & gb.CrLf
   Print #tArchivo, FMain.txContenido.Text
   Close tArchivo
-
+  
   Comando = "/usr/bin/pandoc " & ftemp & " -f markdown -t html -s --metadata title=' ' -o " & ftemp & ".html"
   'Print Comando
-
+  
   Try Shell Comando
   If Error Then
     Message.Warning("No se ha podido convertir el archivo. " & Error.Text)
   Endif
-
+  
   ftemp = ftemp & ".html" 'Agregamos la extensión html a la variable para que coincida con el archivo creado
-
+  
   Wait 0.5
-
+  
   ' A veces se produce un error, no sé por qué, en donde dice que no encuentra el archivo (ftemp)
   ' pero el archivo existe, si se vuelve a realizar el intento se abre sin problema.
   If Exist(ftemp)
     Desktop.Open(ftemp, True)
   Else
-    Message.Warning("Error al previsualizar en hmtl, por favor vuelva a intentarlo")
+    Message.Warning("Error al previsualizar en html, por favor vuelva a intentarlo")
   Endif
-
+  
 End

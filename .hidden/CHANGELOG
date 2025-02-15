@@ -1,3 +1,10 @@
+* Sat Feb 15 2025 The Nerdy Apprentice <marianocattani@gmail.com> 1.0.9
+- Corregido error de tipeo en un 'message box' indicando un error de exportación.
+- Corregido link respecto de la función 'VACUUM' de Sqlite
+- Corregida ubicación de ventana para recargar la lista de entradas
+- Actualización del archivo README
+- Modificación y corrección en la búsqueda de actualizaciones. La función se encuentra ahora en el menú y no deja los molestos archivos '.log' en la carpeta de usuario
+
 * Fri Sep 30 2022 The Nerdy Apprentice <marianocattani@gmail.com> 1.0.8
 - Agregada función de búsqueda de nueva versión
 - Mejora de código
